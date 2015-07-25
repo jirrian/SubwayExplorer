@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class cameraRotation : MonoBehaviour {
+	public Camera myCamera;
+
 	float hRotate;
 	float vRotate;
 	public float hSpeed = 3f;	// speed of rotation horizontally
@@ -13,14 +15,14 @@ public class cameraRotation : MonoBehaviour {
 	void Update () {
 
 		// adjust camera rotation to mouse location
-		// adapted from Unity documentation
-		hRotate -= hSpeed * Input.GetAxis("Mouse X");
+		hRotate = hSpeed * Input.GetAxis("Mouse X");
 		vRotate -= vSpeed * Input.GetAxis("Mouse Y");
 
-		hRotate = Mathf.Clamp(hRotate, minRotate, maxRotate);
+		// clamp y-look
 		vRotate = Mathf.Clamp(vRotate, minRotate, maxRotate);
 
-		transform.localRotation = Quaternion.Euler(vRotate, hRotate, 0);
+		transform.Rotate(0f, hRotate, 0f);
+		myCamera.transform.localEulerAngles = new Vector3(vRotate, 0f, 0f);
 	
 	}
 }
