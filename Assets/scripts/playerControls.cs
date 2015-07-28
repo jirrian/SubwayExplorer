@@ -9,6 +9,8 @@ public class playerControls : MonoBehaviour {
 	public float hSpeed = 3f;
 	public float minRotate = -50f;
 	public float maxRotate = 50f;
+
+	float playerY, playerZ;
 	// Use this for initialization
 	void Start () {
 	}
@@ -22,5 +24,17 @@ public class playerControls : MonoBehaviour {
 
 		//side stepping
 		rbody.AddRelativeForce(x * speed * Time.deltaTime, 0f, y * speed * Time.deltaTime, ForceMode.VelocityChange);
+	}
+
+	void Update(){
+		// simulate infinitely long space
+		playerY = transform.position.y;
+		playerZ = transform.position.z;
+		if(transform.position.x >= 11.38f){
+			transform.position = new Vector3(-11.48f, playerY, playerZ);
+		}
+		else if(transform.position.x <= -11.48f){
+			transform.position = new Vector3(11.38f, playerY, playerZ);
+		}
 	}
 }

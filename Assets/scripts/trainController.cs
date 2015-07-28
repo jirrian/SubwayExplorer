@@ -13,14 +13,17 @@ public class trainController : MonoBehaviour {
 
 	public bool posRest;	// train is in default position off screen
 	public bool negRest;
+
+	float defaultX;	// store position car is in originally
+	float defaultY;
+	float defaultZ;
+
 	// Use this for initialization
 	void Start () {
-		posStop = true;
-		negStop = true;
-		posRest = false;
-		negRest = false;
-	//	negLeaving = false;
-	//	posLeaving = false;
+		defaultX = transform.position.x;
+		defaultY = transform.position.y;
+		defaultZ = transform.position.z;
+		resetCar();
 	}
 	
 	// Update is called once per frame
@@ -28,14 +31,14 @@ public class trainController : MonoBehaviour {
 
 		if(positive && !posStop && !posRest){	// northbound trains moving
 			if(speed <= 20f){
-				Debug.Log("speedingup " + speed);
+		//		Debug.Log("speedingup " + speed);
 				speed += Time.deltaTime;
 			}
 			transform.position += new Vector3(1f, 0f, 0f) * Time.deltaTime * speed;
 			if(transform.position.x >= 70f && speed < 20f && !posRest){
-				transform.position = new Vector3(-70f, 2.14f, -8.03f);
+				transform.position = new Vector3(-70f, defaultY, defaultZ);
 			}
-			if(speed >= 20f && transform.position.x >= 195f){
+			if(speed >= 20f && transform.position.x >= 200f){
 				posRest = true;
 			}
 		}
@@ -45,9 +48,9 @@ public class trainController : MonoBehaviour {
 			}
 			transform.position += new Vector3(-1f, 0f, 0f) * Time.deltaTime * speed;
 			if(transform.position.x <= -70f && speed < 20f){
-				transform.position = new Vector3(70f, 2.14f, 8.53f);
+				transform.position = new Vector3(70f, defaultY, defaultZ);
 			}
-			if(speed >= 20f && transform.position.x <= -195f){
+			if(speed >= 20f && transform.position.x <= -200f){
 				negRest = true;
 			}
 		}
@@ -58,7 +61,7 @@ public class trainController : MonoBehaviour {
 			}
 			transform.position += new Vector3(1f, 0f, 0f) * Time.deltaTime * speed;
 			if(transform.position.x >= 70f){
-				transform.position = new Vector3(-70f, 2.14f, -8.03f);
+				transform.position = new Vector3(-70f, defaultY, defaultZ);
 			}
 	
 		}
@@ -69,8 +72,14 @@ public class trainController : MonoBehaviour {
 			}
 			transform.position += new Vector3(-1f, 0f, 0f) * Time.deltaTime * speed;
 			if(transform.position.x <= -70f){
-				transform.position = new Vector3(70f, 2.14f, 8.53f);
+				transform.position = new Vector3(70f, defaultY, defaultZ);
 			}
+		}
+		else if (posRest){
+			transform.position = new Vector3(defaultX, defaultY, defaultZ);
+		}
+		else if (negRest){
+			transform.position = new Vector3(defaultX, defaultY, defaultZ);
 		}
 	}
 	// TODO: implement stop and start function (gradual stop - reduce speed)
@@ -97,5 +106,14 @@ public class trainController : MonoBehaviour {
 			negStop = false;
 		//	Debug.Log("SOUTH starting");	
 		}
+	}
+
+	// reset settings and location of car
+	public void resetCar(){
+		transform.position = new Vector3(defaultX, defaultY, defaultZ);
+		posStop = true;
+		negStop = true;
+		posRest = false;
+		negRest = false;
 	}
 }

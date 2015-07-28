@@ -47,10 +47,18 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\scripts\cameraRotation.cs" />
+     <Compile Include="Assets\scripts\dead.cs" />
+     <Compile Include="Assets\scripts\fade.cs" />
+     <Compile Include="Assets\scripts\fadeFromBlack.cs" />
+     <Compile Include="Assets\scripts\fadeToBlack.cs" />
      <Compile Include="Assets\scripts\gameLogic.cs" />
      <Compile Include="Assets\scripts\playerControls.cs" />
+     <Compile Include="Assets\scripts\showStairs.cs" />
+     <Compile Include="Assets\scripts\stationSwitch.cs" />
+     <Compile Include="Assets\scripts\stationUI.cs" />
      <Compile Include="Assets\scripts\trainController.cs" />
      <Compile Include="Assets\scripts\wallTrigger.cs" />
+     <Compile Include="Assets\scripts\winGame.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
