@@ -18,7 +18,7 @@ public class stationUI : MonoBehaviour {
 	void Update () {
 		if(player.GetComponent<gameLogic>().station == 1){
 			if(first){
-				text = "Find a way out.\nAstor Pl";
+				text = "Find a station with an exit.\nAstor Pl";
 			}
 			else{
 				text = "Astor Pl";

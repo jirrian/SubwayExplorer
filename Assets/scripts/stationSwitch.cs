@@ -4,9 +4,9 @@ using System.Collections;
 public class stationSwitch : MonoBehaviour {
 	public GameObject fade;
 	public AudioSource sound;
-	bool canEnter;
+//	bool canEnter;
 	void Start(){
-		canEnter = false;
+	//	canEnter = false;
 		fade = GameObject.FindWithTag("fade");
 	}
 

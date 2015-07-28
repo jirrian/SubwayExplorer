@@ -27,7 +27,7 @@ public class fadeFromBlack : MonoBehaviour {
 				GetComponent<Renderer>().material.color = color;
 			}
 			else{
-				GetComponent<Renderer>().enabled = false;
+			//	GetComponent<Renderer>().enabled = false;
 				first = true;
 				start = false;
 			}

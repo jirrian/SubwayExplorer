@@ -15,7 +15,7 @@ public class fadeToBlack : MonoBehaviour {
 	void Update () {
 		if(start == true){
 			if(first){
-				GetComponent<Renderer>().enabled = true;
+			//	GetComponent<Renderer>().enabled = true;
 				timer = 5f;
 				color = GetComponent<Renderer>().material.color;
 				color.a = 0f;
